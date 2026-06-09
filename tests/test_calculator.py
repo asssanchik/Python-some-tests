@@ -19,11 +19,13 @@ class TestCalculator:
          assert Calculator().divide(x, y) == res
 
     @pytest.mark.parametrize(
-        "x, y, res",
+        "x, y, res, expectation",
         [
-            (1, 2, 3),
-            (5, -1, 4)
+            (1, 2, 3, does_not_raise()),
+            (5, -1, 4, does_not_raise()),
+            (5, "-1", -4, pytest.raises(TypeError))
         ]
     )
-    def test_add(self, x, y, res):
-        assert Calculator().add(x, y) == res
+    def test_add(self, x, y, res, expectation):
+        with expectation:
+         assert Calculator().add(x, y) == res
