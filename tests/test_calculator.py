@@ -1,7 +1,7 @@
 import pytest
 from contextlib import nullcontext as does_not_raise
 
-from src.main import Calculator
+from src.mainCalculator import Calculator
 
 class TestCalculator:
 
