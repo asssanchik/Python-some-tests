@@ -7,11 +7,14 @@ class TestCalculator:
         "x, y, res",
         [
             (1, 2, 0.5),
-            (5, -1, -5)
+            (5, -1, -5),
+            (5, "-1", -5)
+
         ]
     )
     def test_divide(self, x, y, res):
-        assert Calculator().divide(x, y) == res
+        with pytest.raises(TypeError):
+         assert Calculator().divide(x, y) == res
 
     @pytest.mark.parametrize(
         "x, y, res",
