@@ -2,6 +2,7 @@ import requests
 from configuration import SERVICE_URL
 
 def test_getting_categories():
-    response = requests.get(url = SERVICE_URL)
+    response = requests.get(url = SERVICE_URL + '/web/main?apikey=KNnpXL0TCyMm9F0qFqF5vsBzj3O4NGBs&for_kids=false&locale=ru&content_lang=ru&limit=4')
+    assert response.status_code == 200, "Received status code is not equal to expected."
     print(response.json())
 
