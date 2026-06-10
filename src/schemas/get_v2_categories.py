@@ -1,5 +1,5 @@
 GET_V2_CATEGORIES = {
-       "type": "object",
+    #   "type": "object",
        "properties": {
             "alias": {"type": "string"},
             "items_total": {"type": "number"},
