@@ -2,7 +2,6 @@ import requests
 
 from configuration import SERVICE_URL
 
-
 from src.baseclasses.response import Response
 from src.schemas.get_v2_categories import GET_V2_CATEGORIES
 
