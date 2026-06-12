@@ -1,4 +1,6 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, validator
+from uuid import UUID
+from src.enums.global_enums import GlobalErrorMessages
 
 class PydanticAPIV1SportEvents(BaseModel):
     id: str
@@ -12,3 +14,12 @@ class PydanticAPIV1SportEvents(BaseModel):
     button_text: str
     is_published: bool
 
+
+
+@validator('id')
+def check_id_is_uuid(cls, id):
+        try:
+            UUID(id)
+        except ValueError:
+            raise ValueError(GlobalErrorMessages.ID_MUST_BE_UUID.value)
+        return id
