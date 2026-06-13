@@ -2,7 +2,9 @@ from pydantic import BaseModel, validator
 from uuid import UUID
 from src.enums.global_enums import GlobalErrorMessages
 
-from typing import List
+from typing import List, Optional
+from pydantic import BaseModel
+
 
 class PydanticAPIV1SportEvents(BaseModel):
     id: str
@@ -17,4 +19,4 @@ class PydanticAPIV1SportEvents(BaseModel):
 
 class PydanticAPIV1SportEventsResponse(BaseModel):
     data: List[PydanticAPIV1SportEvents]
-    has_more: bool
+    has_more: Optional[bool] = None
