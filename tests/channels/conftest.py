@@ -11,4 +11,5 @@ def get_api_v1_channels():
 @pytest.fixture
 def make_number():
     number = randrange(1, 100, 5)
-    yield 
+    yield
+
