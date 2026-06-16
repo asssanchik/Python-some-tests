@@ -18,20 +18,22 @@ def test_request(page: Page):
     page.locator('#email').fill('User413')
     page.locator('#password').fill('k9L-hL')
     page.get_by_role('button', name = 'Войти').click()
-    time.sleep(5)
+
 
 
 def test_response(page: Page):
     def change_response(route: Route):
         response = route.fetch()
-        route.fulfill(response = response)
+        data = response.text
+        data = data.replace('User412', 'Assan')
+        route.fulfill(response = response, body = data)
 
-    page.route(re.compile('profile/412/'), change_response )
+    page.route(re.compile('profile/412'), change_response )
     page.goto('https://gymlog.ru/profile/login/')
     page.locator('#email').fill('User412')
     page.locator('#password').fill('k9L-hL')
     page.get_by_role('button', name = 'Войти').click()
-    page.get_by_role('link', name = 'Мой профиль').click()
+   # page.get_by_role('link', name = 'Мой профиль').click()
     time.sleep(5)
 
 
